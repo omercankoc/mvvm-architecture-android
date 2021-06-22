@@ -1,8 +1,8 @@
-package com.example.countries.view
+package com.omercankoc.countries.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.countries.R
+import com.omercankoc.countries.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

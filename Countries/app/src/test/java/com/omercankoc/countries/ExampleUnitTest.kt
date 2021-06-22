@@ -1,4 +1,4 @@
-package com.example.countries
+package com.omercankoc.countries
 
 import org.junit.Test
 

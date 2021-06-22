@@ -11,7 +11,7 @@ android {
     buildToolsVersion "30.0.3"
 
     defaultConfig {
-        applicationId "com.example.countries"
+        applicationId "com.omercankoc.countries"
         minSdk 27
         targetSdk 30
         versionCode 1

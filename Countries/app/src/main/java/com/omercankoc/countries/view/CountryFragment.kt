@@ -1,30 +1,36 @@
-package com.example.countries.view
+package com.omercankoc.countries.view
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.countries.R
+import com.omercankoc.countries.R
 
-class FeedFragment : Fragment() {
+class CountryFragment : Fragment() {
+
+    private var countryUID : Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        val view = inflater.inflate(R.layout.fragment_feed, container, false)
+
+        val view : View = inflater.inflate(R.layout.fragment_country, container, false)
 
         return view
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        // Bundle ile bir UID verisi gelirse veriyi ilgili degiskene ata.
+        arguments?.let {
+            countryUID = CountryFragmentArgs.fromBundle(it).countryUID
+        }
     }
 }
