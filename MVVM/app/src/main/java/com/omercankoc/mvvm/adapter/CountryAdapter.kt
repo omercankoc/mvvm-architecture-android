@@ -7,6 +7,8 @@ import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.omercankoc.mvvm.R
 import com.omercankoc.mvvm.model.Country
+import com.omercankoc.mvvm.util.downloadFromURL
+import com.omercankoc.mvvm.util.placeholderProgressBar
 import com.omercankoc.mvvm.view.FeedFragmentDirections
 import kotlinx.android.synthetic.main.recycler_item.view.*
 
@@ -32,6 +34,10 @@ class CountryAdapter(val countryList : ArrayList<Country>) : RecyclerView.Adapte
             )
             Navigation.findNavController(it).navigate(action)
         }
+
+        holder.view.imageViewCountry.downloadFromURL(countryList[position].flag,
+            placeholderProgressBar(holder.view.context))
+
     }
 
     // Olusturulacak satir sayisini elde et ve dondur.
