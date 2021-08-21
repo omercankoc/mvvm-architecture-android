@@ -5,7 +5,8 @@
         android:layout_width="match_parent"
         android:layout_height="150dp"
         android:orientation="horizontal"
-        android:gravity="center">
+        android:gravity="center"
+        android:layout_marginTop="8dp">
 
         <ImageView
             android:id="@+id/imageViewFeedFlag"
@@ -24,20 +25,20 @@
             <TextView
                 android:id="@+id/textViewFeedCountry"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:textSize="24dp"
+                android:textSize="18dp"
                 android:textColor="@color/black"
                 android:text="TextView" />
 
             <TextView
                 android:id="@+id/textViewFeedCapital"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:textSize="24dp"
+                android:textSize="18dp"
                 android:textColor="@color/black"
                 android:text="TextView" />
 
