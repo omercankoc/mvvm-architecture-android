@@ -1,4 +1,4 @@
-package com.omercankoc.androidmvvm.view
+package com.omercankoc.mvvmarchitecture.view
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -8,19 +8,17 @@ import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.omercankoc.androidmvvm.adapter.CountryAdapter
-import com.omercankoc.androidmvvm.databinding.FragmentFeedBinding
-import com.omercankoc.androidmvvm.viewmodel.FeedViewModel
-
+import com.omercankoc.mvvmarchitecture.R
+import com.omercankoc.mvvmarchitecture.adapter.CountryAdapter
+import com.omercankoc.mvvmarchitecture.databinding.FragmentFeedBinding
+import com.omercankoc.mvvmarchitecture.viewmodel.FeedViewModel
 
 class FeedFragment : Fragment() {
 
     // Definition Binding
     private lateinit var binding : FragmentFeedBinding
-
     // Ilgili ViewModel nesnesini olustur.
     private lateinit var feedViewModel : FeedViewModel
-
     // Adapter nesnesi olustur.
     private val countryAdapter = CountryAdapter(arrayListOf())
 
@@ -40,10 +38,10 @@ class FeedFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // ViewModel ile Fragmani bagla.
+        // View olusturulduktan sonra ViewModel ile Fragmani bagla.
         feedViewModel = ViewModelProviders.of(this).get(FeedViewModel::class.java)
+        // View olusturulduktan sonra View Model verilerini cek.
         feedViewModel.refreshFeedData()
-
         // Itemleri dikey konumda goruntule.
         binding.recyclerViewCountries.layoutManager = LinearLayoutManager(context)
         // View ile adapter'i bagla.
@@ -52,7 +50,7 @@ class FeedFragment : Fragment() {
         observeLiveData()
     }
 
-    // LiveData'yi gozlemle.
+    // Feed verilerini dinle ve degisiklik oldugunda Adapter araciligi ile Recycler View'a aktar.
     private fun observeLiveData(){
         feedViewModel.countryMutableLiveData.observe(viewLifecycleOwner, Observer { countries ->
             countries?.let {
