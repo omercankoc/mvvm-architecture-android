@@ -1,18 +1,44 @@
 package com.omercankoc.mvvmarchitecture.viewmodel
 
+import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.omercankoc.mvvmarchitecture.model.Country
+import com.omercankoc.mvvmarchitecture.service.CountryService
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.observers.DisposableSingleObserver
+import io.reactivex.schedulers.Schedulers
 
 class FeedViewModel : ViewModel() {
+
     val countryMutableLiveData = MutableLiveData<List<Country>>()
 
-    fun refreshFeedData(){
-        val country1 = Country("Turkey","Ankara","Asia","TRL","Turkish","image")
-        val country2 = Country("Greek","Atina","Europe","Euro","Greeks","image")
-        val country3 = Country("Eygpt","Cahiro","Africa","MSL","Eyptian","image")
+    // CountryService nesnesini olustur.
+    private val countryService = CountryService()
+    // Yapilan Call'lar fragment veya activity sonladirildiginda sonlandir.
+    private val disposable = CompositeDisposable()
 
-        val countryList = arrayListOf<Country>(country1,country2,country3)
-        countryMutableLiveData.value = countryList
+    fun getFeedData(){
+        getFeedDataFromAPI()
+    }
+
+    private fun getFeedDataFromAPI(){
+        disposable.add(
+            countryService.getCountry()
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeWith(object : DisposableSingleObserver <List<Country>>() {
+                    // Basarili olursa
+                    override fun onSuccess(t: List<Country>) {
+                        countryMutableLiveData.value = t
+                    }
+
+                    // Hata alinirsa
+                    override fun onError(e: Throwable) {
+
+                    }
+                })
+        )
     }
 }

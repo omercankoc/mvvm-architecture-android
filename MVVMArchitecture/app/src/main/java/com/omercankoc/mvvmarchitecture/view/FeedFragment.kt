@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.omercankoc.mvvmarchitecture.R
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.omercankoc.mvvmarchitecture.adapter.CountryAdapter
 import com.omercankoc.mvvmarchitecture.databinding.FragmentFeedBinding
 import com.omercankoc.mvvmarchitecture.viewmodel.FeedViewModel
@@ -41,11 +41,16 @@ class FeedFragment : Fragment() {
         // View olusturulduktan sonra ViewModel ile Fragmani bagla.
         feedViewModel = ViewModelProviders.of(this).get(FeedViewModel::class.java)
         // View olusturulduktan sonra View Model verilerini cek.
-        feedViewModel.refreshFeedData()
+        feedViewModel.getFeedData()
         // Itemleri dikey konumda goruntule.
         binding.recyclerViewCountries.layoutManager = LinearLayoutManager(context)
         // View ile adapter'i bagla.
         binding.recyclerViewCountries.adapter = countryAdapter
+
+        // Swipe asagi dogru cekildiginde verileri guncelle.
+        binding.swipeRefreshLayout.setOnRefreshListener {
+            feedViewModel.getFeedData()
+        }
 
         observeLiveData()
     }

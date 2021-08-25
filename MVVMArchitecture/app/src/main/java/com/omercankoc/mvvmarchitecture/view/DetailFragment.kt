@@ -55,7 +55,7 @@ class DetailFragment : Fragment() {
                 binding.textViewCountry.text = country.country
                 binding.textViewCapital.text = country.capital
                 binding.textViewRegion.text = country.region
-                binding.textViewCurrency.text = country.currenccy
+                binding.textViewCurrency.text = country.currency
                 binding.textViewLanguage.text = country.language
             }
         })
