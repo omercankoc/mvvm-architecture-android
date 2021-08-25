@@ -6,6 +6,8 @@ import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.omercankoc.mvvmarchitecture.databinding.RecyclerViewRowBinding
 import com.omercankoc.mvvmarchitecture.model.Country
+import com.omercankoc.mvvmarchitecture.utility.downloadFromUrl
+import com.omercankoc.mvvmarchitecture.utility.placeholderProgressBar
 import com.omercankoc.mvvmarchitecture.view.FeedFragmentDirections
 
 class CountryAdapter(val countryList : ArrayList<Country>) : RecyclerView.Adapter<CountryAdapter.CountryViewHolder>() {
@@ -18,8 +20,8 @@ class CountryAdapter(val countryList : ArrayList<Country>) : RecyclerView.Adapte
 
     // View holder olusturuldugunda layout'un view'larini bagla.
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CountryViewHolder {
-        val binding =
-            RecyclerViewRowBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding = RecyclerViewRowBinding.inflate(LayoutInflater
+                .from(parent.context), parent, false)
         return CountryViewHolder(binding)
     }
 
@@ -27,6 +29,9 @@ class CountryAdapter(val countryList : ArrayList<Country>) : RecyclerView.Adapte
     override fun onBindViewHolder(viewHolder: CountryViewHolder, position: Int) {
         viewHolder.binding.textViewFeedCountry.text = countryList[position].country
         viewHolder.binding.textViewFeedCapital.text = countryList[position].capital
+        viewHolder.binding.imageViewFeedFlag.downloadFromUrl(countryList[position].flag,
+            placeholderProgressBar(viewHolder.binding.imageViewFeedFlag.context))
+
         // Item'e tiklandiginda ilgili verinin detay sayfasina git.
         viewHolder.itemView.setOnClickListener {
             val action = FeedFragmentDirections.actionFeedFragmentToDetailFragment()
