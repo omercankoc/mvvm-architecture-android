@@ -35,6 +35,11 @@ android {
         viewBinding = true
         dataBinding = true
     }
+    kotlin {
+        experimental {
+            coroutines 'enable'
+        }
+    }
 }
 
 dependencies {
@@ -44,7 +49,7 @@ dependencies {
     def retrofitVersion = '2.3.0'
     def glideVersion = '4.9.0'
     def rxJavaVersion = '2.1.1'
-    def roomVersion = '2.2.3'
+    def roomVersion = '2.3.0'
     def navVersion = '2.3.5'
     def preferencesVersion = '1.1.0'
 
