@@ -9,6 +9,8 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.omercankoc.mvvmarchitecture.R
 import com.omercankoc.mvvmarchitecture.databinding.FragmentDetailBinding
+import com.omercankoc.mvvmarchitecture.utility.downloadFromUrl
+import com.omercankoc.mvvmarchitecture.utility.placeholderProgressBar
 import com.omercankoc.mvvmarchitecture.viewmodel.DetailViewModel
 
 class DetailFragment : Fragment() {
@@ -36,14 +38,15 @@ class DetailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // View olusturulduktan sonra ViewModel ile Fragmani bagla.
-        detailViewModel = ViewModelProviders.of(this).get(DetailViewModel::class.java)
-        // View olusturulduktan sonra View Model verilerini Room'dan cek.
-        detailViewModel.getDetailsFromRoom()
         // View olusturuldugunda Country UUID verisini bos degil ise degerini al.
         arguments?.let {
             countryUUID = DetailFragmentArgs.fromBundle(it).countryUUID
         }
+        // View olusturulduktan sonra ViewModel ile Fragmani bagla.
+        detailViewModel = ViewModelProviders.of(this).get(DetailViewModel::class.java)
+        // View olusturulduktan sonra View Model verilerini Room'dan cek.
+        detailViewModel.getDetailsFromRoom(countryUUID)
+
 
         observeLiveData()
     }
@@ -57,6 +60,10 @@ class DetailFragment : Fragment() {
                 binding.textViewRegion.text = country.region
                 binding.textViewCurrency.text = country.currency
                 binding.textViewLanguage.text = country.language
+                context?.let {
+                    binding.imageViewDetail.downloadFromUrl(country.flag, placeholderProgressBar(it))
+
+                }
             }
         })
     }

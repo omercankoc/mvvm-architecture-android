@@ -47,9 +47,10 @@ class FeedFragment : Fragment() {
         // View ile adapter'i bagla.
         binding.recyclerViewCountries.adapter = countryAdapter
 
-        // Swipe asagi dogru cekildiginde verileri guncelle.
+        // Swipe asagi dogru cekildiginde verileri API araciligi ile guncelle.
         binding.swipeRefreshLayout.setOnRefreshListener {
-            feedViewModel.getFeedData()
+            feedViewModel.refreshFeed()
+            binding.swipeRefreshLayout.isRefreshing = false
         }
 
         observeLiveData()

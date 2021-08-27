@@ -96,4 +96,15 @@ class FeedViewModel(application : Application) : BaseViewModel(application) {
         }
         customSharedPreferences.saveTime(System.nanoTime())
     }
+
+    // Kullanicinin Swipe araciligi ile verilerini guncelle.
+    fun refreshFeed(){
+        getFeedDataFromAPI()
+    }
+
+    // Fragman sonlandirildiginda disposable'i temizle.
+    override fun onCleared() {
+        super.onCleared()
+        disposable.clear()
+    }
 }

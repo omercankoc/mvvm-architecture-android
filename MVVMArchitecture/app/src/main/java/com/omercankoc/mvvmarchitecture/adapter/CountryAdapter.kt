@@ -34,7 +34,7 @@ class CountryAdapter(val countryList : ArrayList<Country>) : RecyclerView.Adapte
 
         // Item'e tiklandiginda ilgili verinin detay sayfasina git.
         viewHolder.itemView.setOnClickListener {
-            val action = FeedFragmentDirections.actionFeedFragmentToDetailFragment()
+            val action = FeedFragmentDirections.actionFeedFragmentToDetailFragment(countryList[position].uuid)
             Navigation.findNavController(it).navigate(action)
         }
     }
