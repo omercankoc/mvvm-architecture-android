@@ -43,7 +43,7 @@ class FeedViewModel(application : Application) : BaseViewModel(application) {
         }
     }
 
-    //
+    // Verileri Room yardimi ile SQLite'dan cek.
     private fun getDataFromSQLite() {
         launch {
             val list = CountryDatabase(getApplication()).countryDao().getAllCountries()
@@ -52,7 +52,7 @@ class FeedViewModel(application : Application) : BaseViewModel(application) {
         }
     }
 
-    //
+    // Verileri Retrofit yardimi ile API'den cek.
     private fun getFeedDataFromAPI(){
         disposable.add(
             countryService.getCountry()
@@ -73,7 +73,7 @@ class FeedViewModel(application : Application) : BaseViewModel(application) {
         )
     }
 
-    //
+    // Verileri goster.
     private fun showCountries(countryList : List<Country>){
         countryMutableLiveData.value = countryList
     }
