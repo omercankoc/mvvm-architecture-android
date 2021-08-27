@@ -32,5 +32,5 @@ data class Country(
     var flag : String
 ){
     @PrimaryKey(autoGenerate = true)
-    var UUID : Int = 0
+    var uuid : Int = 0
 }

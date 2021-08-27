@@ -21,7 +21,7 @@ class CustomSharedPreferences {
         }
 
         private fun makeCustomSharedPreferences(context : Context) : CustomSharedPreferences {
-            sharedPreferences = PreferenceManager .getDefaultSharedPreferences(context)
+            sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context)
             return CustomSharedPreferences()
         }
     }

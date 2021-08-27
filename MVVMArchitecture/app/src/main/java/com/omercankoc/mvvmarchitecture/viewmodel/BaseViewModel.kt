@@ -11,6 +11,7 @@ abstract class BaseViewModel(application : Application) : AndroidViewModel(appli
 
     private val job = Job()
 
+    // Oncelikle isini yap sonra main thread'e don.
     override val coroutineContext: CoroutineContext
         get() = job + Dispatchers.Main
 
