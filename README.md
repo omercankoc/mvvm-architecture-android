@@ -10,5 +10,6 @@ This app is an example of Model-View-ViewModel. The application pulls data from 
   <li>Retrofit</li>
   <li>RxJava</li>
   <li>KTX</li>
+  <li>SQLite</li>
   <li>Room</li>
 </ul>
