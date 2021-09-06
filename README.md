@@ -12,4 +12,5 @@ This app is an example of Model-View-ViewModel. The application pulls data from 
   <li>KTX</li>
   <li>SQLite</li>
   <li>Room</li>
+  <li>View Binding</li>
 </ul>
