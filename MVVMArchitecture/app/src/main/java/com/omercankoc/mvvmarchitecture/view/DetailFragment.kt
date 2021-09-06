@@ -46,7 +46,7 @@ class DetailFragment : Fragment() {
         detailViewModel = ViewModelProviders.of(this).get(DetailViewModel::class.java)
         // View olusturulduktan sonra View Model verilerini Room'dan cek.
         detailViewModel.getDetailsFromRoom(countryUUID)
-        
+
         observeLiveData()
     }
 
