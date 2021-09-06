@@ -56,7 +56,7 @@ class FeedFragment : Fragment() {
         observeLiveData()
     }
 
-    // Feed verilerini dinle ve degisiklik oldugunda Adapter araciligi ile Recycler View'a aktar.
+    // Feed verilerini dinle ve degisiklik oldugunda Adapter araciligi ile Recycler View'i yenile.
     private fun observeLiveData(){
         feedViewModel.countryMutableLiveData.observe(viewLifecycleOwner, Observer { countries ->
             countries?.let {

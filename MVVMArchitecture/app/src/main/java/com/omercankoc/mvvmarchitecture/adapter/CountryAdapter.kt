@@ -15,7 +15,6 @@ class CountryAdapter(val countryList : ArrayList<Country>) : RecyclerView.Adapte
     // Ilgili view'in tutucu nesnesi.
     class CountryViewHolder(val binding: RecyclerViewRowBinding) :
         RecyclerView.ViewHolder(binding.root) {
-
     }
 
     // View holder olusturuldugunda layout'un view'larini bagla.
