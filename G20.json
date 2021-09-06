@@ -105,7 +105,7 @@
   },
   {
     "name": "Italia",
-    "capital": "Roma,
+    "capital": "Roma",
     "region": "Europe",
     "currency": "Euro",
     "flag": "https://raw.githubusercontent.com/omercankoc/mvvm-architecture-android/master/flags/italy.png",
