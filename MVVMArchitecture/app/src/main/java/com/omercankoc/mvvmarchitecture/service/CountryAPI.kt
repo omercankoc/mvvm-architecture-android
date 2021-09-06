@@ -6,8 +6,8 @@ import retrofit2.http.GET
 
 interface CountryAPI {
     // https://raw.githubusercontent.com/ -> Base URL
-    // atilsamancioglu/IA19-DataSetCountries/master/countrydataset.json -> EXT
-    @GET("atilsamancioglu/IA19-DataSetCountries/master/countrydataset.json")
+    // omercankoc/mvvm-architecture-android/master/G20.json -> EXT
+    @GET("omercankoc/mvvm-architecture-android/master/G20.json")
     // Single -> API'ye bir kere eris ve bekle.
     // Observable -> API'ye bir kere eris ve dinle.
     fun getCountryFromAPI() : Single<List<Country>>
